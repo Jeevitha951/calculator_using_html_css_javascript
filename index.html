@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: linear-gradient(45deg,#0a0a0a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            width: 100%;
+            width: 100vh;
+        }
+
+        #calculator {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #display {
+            font-size: 24px;
+            margin-bottom: 10px;
+            padding: 10px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            width: 100%;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px;
+            margin: 10px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button.operator {
+            background-color: #28a745;
+        }
+
+        button.equals {
+            background-color: #28a745;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div id="calculator">
+    <div id="display"></div>
+    <div>
+        <button class="button">7</button>
+        <button class="button">8</button>
+        <button class="button">9</button>
+        <button class="operator">/</button>
+
+    </div>
+    <div><button class="button">4</button>
+        <button class="button">5</button>
+        <button class="button">6</button>
+        <button class="operator">*</button>
+
+    </div>
+    <div>
+        <button class="button">1</button>
+        <button class="button">2</button>
+        <button class="button">3</button>
+         <button class="operator">-</button>
+
+    </div>
+    <div>
+        <button class="button">0</button>
+        <button class="operator">.</button>
+        <button class="equals">=</button>
+        <button class="operator">+</button>
+
+    </div>
+    
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const display = document.getElementById("display");
+        const buttons = document.querySelectorAll("button");
+        let expression = "";
+
+        buttons.forEach(button => {
+            button.addEventListener("click", function () {
+                if (button.classList.contains("equals")) {
+                    try {
+                        expression = eval(expression).toString();
+                        display.textContent = expression;
+                    } catch (error) {
+                        display.textContent = "Error";
+                    }
+                } else {
+                    expression += button.textContent;
+                    display.textContent = expression;
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
